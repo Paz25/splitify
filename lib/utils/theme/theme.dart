@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splitify/const/colors.dart';
 import 'package:splitify/utils/theme/text_theme.dart';
 
 class TAppTheme {
@@ -8,8 +9,8 @@ class TAppTheme {
     useMaterial3: true,
     fontFamily: 'Poppins',
     brightness: Brightness.light,
-    primaryColor: const Color(0xFF01333C),
-    scaffoldBackgroundColor: const Color(0xFFF5E9DD),
+    primaryColor: TColors.secondaryColor,
+    scaffoldBackgroundColor: TColors.tertiaryColor,
     textTheme: TTextTheme.lightTextTheme,
   );
 }
