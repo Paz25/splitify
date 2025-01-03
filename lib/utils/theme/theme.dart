@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splitify/utils/theme/text_theme.dart';
 
 class TAppTheme {
   TAppTheme._();
@@ -9,5 +10,6 @@ class TAppTheme {
     brightness: Brightness.light,
     primaryColor: const Color(0xFF01333C),
     scaffoldBackgroundColor: const Color(0xFFF5E9DD),
+    textTheme: TTextTheme.lightTextTheme,
   );
 }
