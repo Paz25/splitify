@@ -1,18 +1,18 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:intl/intl.dart';
+
 import 'package:splitify/const/colors.dart';
 import 'package:splitify/model/bill.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class HomeView2 extends StatefulWidget {
+  const HomeView2({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomeView2> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewState extends State<HomeView2> {
   List<Bill> bills = allBills;
 
   @override
@@ -35,11 +35,11 @@ class _HomeViewState extends State<HomeView> {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      body: const SizedBox(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Padding(
-          padding: EdgeInsetsDirectional.only(
+          padding: const EdgeInsetsDirectional.only(
             top: 48,
             bottom: 24,
           ),
@@ -47,7 +47,7 @@ class _HomeViewState extends State<HomeView> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Text(
                   'Recent Bills',
@@ -58,14 +58,19 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
               ),
-              SizedBox(height: 8),
-              SizedBox(
-                child: Column(
-                  children: [
-                    BillsCard(),
-                    SizedBox(height: 16),
-                    BillsCard(),
-                  ],
+              const SizedBox(height: 8),
+              Container(
+                color: Colors.lightBlue,
+                child: ListView.builder(
+                  itemCount: bills.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        BillsCard(bill: bills[index]),
+                        const SizedBox(height: 16),
+                      ],
+                    );
+                  },
                 ),
               ),
             ],
@@ -77,9 +82,9 @@ class _HomeViewState extends State<HomeView> {
 }
 
 class BillsCard extends StatelessWidget {
-  const BillsCard({
-    super.key,
-  });
+  final Bill bill;
+
+  const BillsCard({super.key, required this.bill});
 
   @override
   Widget build(BuildContext context) {
@@ -127,45 +132,44 @@ class BillsCard extends StatelessWidget {
                 width: 64,
                 height: 64,
                 decoration: ShapeDecoration(
-                  image: const DecorationImage(
-                    image: NetworkImage(
-                        "https://i.pinimg.com/736x/26/c0/23/26c023e833ca1b08a20176868996f7d1.jpg"),
+                  image: DecorationImage(
+                    image: NetworkImage(bill.imageSrc),
                     fit: BoxFit.cover,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(2),
                   ),
                 ),
               ),
               const SizedBox(width: 16),
-              const Expanded(
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Bill 1",
+                      bill.location,
                       textAlign: TextAlign.left,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
-                      "Tuesday, 31 December 2024",
+                      DateFormat('EEEE, dd MMMM yyyy').format(bill.date),
                       textAlign: TextAlign.left,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
-                      "Rp372.500,00",
+                      "Rp${bill.totalAmount.toStringAsFixed(2)}",
                       textAlign: TextAlign.left,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 12,
                         fontWeight: FontWeight.w400,

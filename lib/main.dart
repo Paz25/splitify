@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:splitify/utils/theme/theme.dart';
 import 'package:splitify/view/home_view.dart';
+import 'package:splitify/view/home_view_temp.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,7 +15,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Splitify',
-      home: const HomeView(),
+      home: const HomeView2(),
       theme: TAppTheme.lightTheme,
     );
   }
