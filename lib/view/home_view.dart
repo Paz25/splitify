@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 import 'package:splitify/const/colors.dart';
 import 'package:splitify/model/bill.dart';
+import 'package:splitify/routes/routes.dart';
 import 'package:splitify/view/add_bills.dart';
 
 class HomeView extends StatefulWidget {
@@ -26,10 +27,9 @@ class _HomeViewState extends State<HomeView> {
             bottom: 16,
             child: FloatingActionButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AddBillsView()));
+                Navigator.of(context).push(
+                  createSlideRoute(const AddBillsView()),
+                );
               },
               backgroundColor: TColors.blueAccent,
               foregroundColor: TColors.whiteAccent,

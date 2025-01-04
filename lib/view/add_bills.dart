@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:splitify/component/button_component.dart';
 import 'package:splitify/component/form_component.dart';
 import 'package:splitify/const/colors.dart';
+import 'package:splitify/routes/routes.dart';
 import 'package:splitify/view/add_people.dart';
 
 class AddBillsView extends StatefulWidget {
@@ -49,7 +50,7 @@ class _AddBillsViewState extends State<AddBillsView> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(16),
           child: Form(
             key: _formKey,
             child: Column(
@@ -117,11 +118,10 @@ class _AddBillsViewState extends State<AddBillsView> {
                     if (_formKey.currentState?.validate() ?? false) {
                       print("Selected Value: $selectedCategoryValue");
                       print("Selected Date: $selectedDate");
+                      Navigator.of(context)
+                          .push(createSlideRoute(const AddPeopleView()));
                     }
                   },
-                  route: MaterialPageRoute(
-                    builder: (context) => AddPeopleView(),
-                  ),
                 ),
               ],
             ),

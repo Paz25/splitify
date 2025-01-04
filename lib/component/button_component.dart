@@ -5,15 +5,11 @@ ElevatedButton buttonPrimary({
   Key? key,
   required BuildContext context,
   required String text,
-  MaterialPageRoute? route,
   VoidCallback? onPressed,
 }) {
   return ElevatedButton(
     key: key,
     onPressed: () {
-      if (route != null) {
-        Navigator.push(context, route);
-      }
       if (onPressed != null) {
         onPressed();
       }

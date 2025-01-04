@@ -33,6 +33,17 @@ class _AddPeopleViewState extends State<AddPeopleView> {
         centerTitle: true,
         backgroundColor: TColors.secondaryColor,
       ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              
+            ]
+          ),
+        ),
+      ),
     );
   }
 }
